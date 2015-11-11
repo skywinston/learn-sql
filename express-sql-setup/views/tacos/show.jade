@@ -1,9 +1,13 @@
 extends ../layout
 
 block content
+  a(href="/tacos") Back to all tacos
+  hr
   h1 Your taco is:
   h3= taco.shell
   h3= taco.taste
 
   a(href="/tacos/#{taco.id}/edit") Edit
+  br
+  a(href="/tacos/#{taco.id}/delete") Remove
   

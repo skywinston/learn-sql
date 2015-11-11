@@ -69,4 +69,12 @@ router.post('/:id/update', function(req, res, next){
   });
 });
 
+router.get('/:id/delete', function(req, res, next){
+  pg.connect(conString, function(err, client, done){
+    client.query('delete from tacos where id = $1', [req.params.id], function(err, result){
+      res.redirect('/tacos');
+    });
+  });
+});
+
 module.exports = router;
