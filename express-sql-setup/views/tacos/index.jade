@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Welcome to the Tacos Page
+  ul
+    for taco in tacos
+      li 
+        a(href="/tacos/#{taco.id}") 
+          | #{taco.shell} — #{taco.taste}
+  a(href="/tacos/new") New Taco
+  
+  
