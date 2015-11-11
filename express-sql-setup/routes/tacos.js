@@ -47,7 +47,26 @@ router.get('/:id', function(req, res, next){
       console.log(result);
       res.render('tacos/show', {taco: result.rows[0]});
     });
-  })
-})
+  });
+});
+
+router.get('/:id/edit', function(req, res, next){
+  pg.connect(conString, function(err, client, done){
+    client.query('SELECT * from tacos where id = $1', [req.params.id], function(err, result){
+      done();
+      res.render('tacos/edit', {taco: result.rows[0]});
+    });
+  });
+});
+
+router.post('/:id/update', function(req, res, next){
+  pg.connect(conString, function(err, client, done){
+    client.query('UPDATE tacos SET shell = $1, taste = $2 WHERE id = $3', [req.body.shell, req.body.taste, req.params.id], function(err, result){
+      console.log(result);
+      done();
+      res.redirect('/tacos');
+    });
+  });
+});
 
 module.exports = router;

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  form(action="/tacos/#{taco.id}/update", method="post")
+    label(for="shell") Shell
+    input(type="text", name="shell", value="#{taco.shell}")
+    br
+    label(for="taste") Taste 
+    input(type="text", name="taste", value="#{taco.taste}")
+    br
+    input(type="submit", name="name", value="Add Taco")
+
+    
