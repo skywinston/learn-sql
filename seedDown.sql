@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS movies;
